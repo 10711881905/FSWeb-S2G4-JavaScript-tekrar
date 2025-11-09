@@ -50,8 +50,9 @@ function KareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function CemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinCevresi(cemberYaricapi) {
+  return 2 * pi * cemberYaricapi;
+  
 }
 
 /* (Oto test yok) Yukarıdaki CemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -64,8 +65,8 @@ function CemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function CemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function CemberinAlani(cemberYaricapi, pi) {
+  return pi * Math.pow(cemberYaricapi, 2);
 }
 
 /* (Oto test yok) Yukarıdaki CemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -98,28 +99,70 @@ let ucetambolunenler,
   tekraredensayilar;
 
 // 3a çözümü
-
-/* kodlar buraya */
+let enKucukSayi = sayilar[0];
+let enBuyukSayi = sayilar[0];
+for (let i = 0; i < sayilar.length; i++) {
+  if(sayilar[i] < enKucukSayi) {
+    enKucukSayi = sayilar[i];
+  } 
+  if(sayilar[i] > enBuyukSayi) {
+    enBuyukSayi = sayilar[i];    
+  } 
+}
+  
 
 // 3b çözümü:
 
-/* kodlar buraya */
+ucetambolunenler = [];
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+    ucetambolunenler.push(sayi);
+  }
+  })
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => toplam + sayi, 0);
 
 // 3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = sayilar.filter((sayi) => sayi < 500);
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = besyuzdenkucuksayilar.slice().sort((a, b) => a - b);
 
 // 3f çözümü
 
-/* kodlar buraya */
+tekraredensayilar = [];
+let sayacNesnesi = {};
+sayilar.forEach((sayi) => {
+  if (sayacNesnesi[sayi]) {
+    sayacNesnesi[sayi]++;
+  } else {
+    sayacNesnesi[sayi] = 1;
+  }
+}); 
+for(let sayi in sayacNesnesi) {
+  if(sayacNesnesi[sayi] > 1) {
+    tekraredensayilar.push(`${sayi} sayısı ${sayacNesnesi[sayi]} kere tekrar edilmiştir`);
+  }
+}
+  
+
+
+console.log(KareninAlani(10));
+console.log(CemberinCevresi(5));
+console.log(CemberinAlani(15, pi));
+console.log("Sayilar dizisi içindeki sayı adedi:", sayilar.length);
+console.log("En küçük sayı:", enKucukSayi);
+console.log("En büyük sayı:", enBuyukSayi);
+console.log("3'e tam bölünenler dizisi:", ucetambolunenler);
+console.log("3'e tam bölünenler toplamı:", ucebolunenlerintoplami);
+console.log("500'den küçük sayılar dizisi:", besyuzdenkucuksayilar);
+console.log("Sıralı sayılar dizisi:", siralisayilar);
+console.log("Tekrar eden sayılar dizisi:", tekraredensayilar);  
+
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 
